@@ -18,7 +18,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import imatch.composeapp.generated.resources.Res
 import imatch.composeapp.generated.resources._1_apple
-import imatch.composeapp.generated.resources.compose_multiplatform
+import org.jetbrains.compose.resources.Resource
 
 @Composable
 @Preview
@@ -47,4 +47,24 @@ fun App() {
             }
         }
     }
+}
+
+data class Card(/** Always eight */ val images: List<ImatchImage>)
+data class ImatchImage(
+    val xCenter: Double,
+    val yCenter: Double,
+    val rotation: Double,
+    val maxWidthAndHeight: Double,
+    val resource: Resource,
+)
+
+fun ImatchImage.matches(other: ImatchImage): Boolean =
+    resource == other.resource
+
+/** Always 55 */
+fun getDeck(): List<Card> = TODO("Wout will do this")
+
+@Composable
+fun ImatchImageCard(card: Card) {
+
 }
